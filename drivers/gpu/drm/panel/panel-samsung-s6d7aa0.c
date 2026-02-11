@@ -329,7 +329,10 @@ static const struct s6d7aa0_panel_desc s6d7aa0_lsl080al03_desc = {
 /* Initialization structures for LTL101AT01 panel */
 
 static const struct drm_display_mode s6d7aa0_ltl101at01_mode = {
-	.clock = (768 + 96 + 16 + 184) * (1024 + 8 + 2 + 6) * 60 / 1000,
+	/* .clock = (768 + 96 + 16 + 184) * (1024 + 8 + 2 + 6) * 60 / 1000, */
+	/* Use a clock rate the board can produce to avoid set_rate calls disrupting the PLL
+	   Old: 66393.6 => New: 66400 (60.005 Hz) */
+	.clock = 19200000 * 20.75 / 6 / 1000,
 	.hdisplay = 768,
 	.hsync_start = 768 + 96,
 	.hsync_end = 768 + 96 + 16,
