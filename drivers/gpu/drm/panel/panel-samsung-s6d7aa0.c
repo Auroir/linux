@@ -331,16 +331,17 @@ static const struct s6d7aa0_panel_desc s6d7aa0_lsl080al03_desc = {
 static const struct drm_display_mode s6d7aa0_ltl101at01_mode = {
 	/* .clock = (768 + 96 + 16 + 184) * (1024 + 8 + 2 + 6) * 60 / 1000, */
 	/* Use a clock rate the board can produce to avoid set_rate calls disrupting the PLL
-	   Old: 66393.6 => New: 66400 (60.005 Hz) */
-	.clock = 19200000 * 20.75 / 6 / 1000,
+	   Old: 66393.6 => New: 67200 (60.036Hz) */
+	.clock = 19200000 * 21 / 6 / 1000,
 	.hdisplay = 768,
 	.hsync_start = 768 + 96,
 	.hsync_end = 768 + 96 + 16,
 	.htotal = 768 + 96 + 16 + 184,
 	.vdisplay = 1024,
-	.vsync_start = 1024 + 8,
-	.vsync_end = 1024 + 8 + 2,
-	.vtotal = 1024 + 8 + 2 + 6,
+	/* Increase porch 8->20 to compensate */
+	.vsync_start = 1024 + 20,
+	.vsync_end = 1024 + 20 + 2,
+	.vtotal = 1024 + 20 + 2 + 6,
 	.width_mm = 148,
 	.height_mm = 197,
 };
