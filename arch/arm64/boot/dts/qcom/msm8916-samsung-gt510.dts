@@ -137,9 +137,9 @@
 	mdss_dsi_opp_table: opp-table {
 		compatible = "operating-points-v2";
 		// xo_clock -> <MULTI> -> analog_postdiv_clk -> 0.5x -> byte_mux -> 0.25x -> gcc_mdss_byte0
-		// Using the same multi as the panel: 19200000 * 20.75 / 2 / 4
-		opp-49800000 {
-			opp-hz = /bits/ 64 <49800000>;
+		// Using the same multi as the panel: 19200000 * 21 / 2 / 4
+		opp-50400000 {
+			opp-hz = /bits/ 64 <50400000>;
 		};
 	};
 
