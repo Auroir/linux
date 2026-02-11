@@ -132,6 +132,16 @@
 	pinctrl-0 = <&mdss_default>;
 	pinctrl-1 = <&mdss_sleep>;
 	pinctrl-names = "default", "sleep";
+	
+	operating-points-v2 = <&mdss_dsi_opp_table>;
+	mdss_dsi_opp_table: opp-table {
+		compatible = "operating-points-v2";
+		// xo_clock -> <MULTI> -> analog_postdiv_clk -> 0.5x -> byte_mux -> 0.25x -> gcc_mdss_byte0
+		// Using the same multi as the panel: 19200000 * 20.75 / 2 / 4
+		opp-49800000 {
+			opp-hz = /bits/ 64 <49800000>;
+		};
+	};
 
 	panel@0 {
 		compatible = "samsung,ltl101at01", "samsung,s6d7aa0";
